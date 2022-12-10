@@ -37,7 +37,6 @@ public class ContactServiceImpl implements IContactService {
 
 	public void updateContact(Contact c) {
 		if(!repo.existsById(c.getId()) || c.getId()==null) {
-			System.out.println("Came here");
 			throw new ContactNotFoundException("CONTACT '"+c.getId()+"' DOES NOT EXIST");
 		} else {
 			repo.save(c);

@@ -2,6 +2,8 @@ package com.app.myconame.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -28,8 +30,8 @@ public class ContactRestController {
 	//1. create Contact
 	@PostMapping("/")
 	private ResponseEntity<String> createContact(
-			@RequestBody Contact c){
-		Integer id = service.saveContact(c);
+			@RequestBody @Valid Contact c){
+			Integer id = service.saveContact(c);
 		return new ResponseEntity<String>("Contact '"+id+"' saved successfully", HttpStatus.CREATED);
 	}
 	
