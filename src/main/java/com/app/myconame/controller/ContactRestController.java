@@ -58,7 +58,7 @@ public class ContactRestController {
 	//4. update one contact
 	@PutMapping("/update")
 	private ResponseEntity<String> updateContact(
-			@RequestBody Contact c){
+			@RequestBody @Valid Contact c){
 		ResponseEntity<String> response = null;
 		try {
 			service.updateContact(c);
