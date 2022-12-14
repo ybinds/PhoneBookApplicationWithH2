@@ -38,13 +38,13 @@ public class ContactRestController {
 	}
 	
 	//2. get all Contacts
-	@GetMapping("/all")
+	@GetMapping("/contacts")
 	private ResponseEntity<List<Contact>> getAllContacts(){
 		return ResponseEntity.ok(service.getAllContacts());
 	}
 
 	//3. get one contact
-	@GetMapping("/fetch/{id}")
+	@GetMapping("/contact/{id}")
 	private ResponseEntity<Contact> getOneContact(
 			@PathVariable("id") Integer id){
 		ResponseEntity<Contact> response = null;
@@ -58,7 +58,7 @@ public class ContactRestController {
 	}
 
 	//4. update one contact
-	@PutMapping("/update")
+	@PutMapping("/contact")
 	private ResponseEntity<String> updateContact(
 			@RequestBody @Valid Contact c){
 		ResponseEntity<String> response = null;
@@ -73,7 +73,7 @@ public class ContactRestController {
 	}
 
 	//5. delete one contact
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("/contact/{id}")
 	private ResponseEntity<String> deleteContact(
 			@PathVariable("id") Integer id){
 		ResponseEntity<String> response = null;
