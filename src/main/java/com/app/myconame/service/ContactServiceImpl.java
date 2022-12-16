@@ -5,6 +5,8 @@ import java.util.List;
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.app.myconame.entity.Contact;
@@ -25,7 +27,15 @@ public class ContactServiceImpl implements IContactService {
 	public List<Contact> getAllContacts() {
 		return repo.findAll();
 	}
+	
+	public Page<Contact> getAllContacts(Pageable p) {
+		return repo.findAll(p);
+	}
 
+	public List<Contact> getAllContacts(String word) {
+		return repo.getAllContactsByWord(word);
+	}
+	
 	public Contact getContactById(Integer id) {
 		return repo.findById(id)
 				.orElseThrow(() -> new ContactNotFoundException("CONTACT '"+ id +"' DOES NOT EXIST"));
