@@ -26,7 +26,7 @@ import com.app.myconame.exception.ContactNotFoundException;
 import com.app.myconame.service.IContactService;
 
 @RestController
-@CrossOrigin("http://localhost:4200/")
+@CrossOrigin
 @RequestMapping("/v1/api")
 public class ContactRestController {
 

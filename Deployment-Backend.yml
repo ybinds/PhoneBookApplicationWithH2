@@ -5,7 +5,8 @@ metadata:
   name: phonebookapp-deploy
 spec:
   replicas: 2
-  strategy: RollingUpdate
+  strategy: 
+    type: RollingUpdate
   selector:
     matchLabels:
       app: phonebookapp
