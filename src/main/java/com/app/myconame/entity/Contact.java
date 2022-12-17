@@ -35,4 +35,6 @@ public class Contact {
 	private String email;
 	
 	private Long phoneNumber;
+	
+	private boolean active;
 }

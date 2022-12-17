@@ -21,11 +21,12 @@ public class ContactServiceImpl implements IContactService {
 	private ContactRepository repo;
 	
 	public Integer saveContact(Contact c) {
+		c.setActive(true);
 		return repo.save(c).getId();
 	}
 
 	public List<Contact> getAllContacts() {
-		return repo.findAll();
+		return repo.findAllByActive(true);
 	}
 	
 	public Page<Contact> getAllContacts(Pageable p) {
@@ -42,7 +43,12 @@ public class ContactServiceImpl implements IContactService {
 	}
 
 	public void deleteContact(Integer id) {
-		repo.delete(getContactById(id));
+		//repo.delete(getContactById(id));
+		Contact c = getContactById(id);
+		if(c != null) { 
+			c.setActive(false);
+			repo.save(c);
+		}	
 	}
 
 	public void updateContact(Contact c) {

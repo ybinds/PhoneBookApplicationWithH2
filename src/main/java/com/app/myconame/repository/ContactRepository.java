@@ -11,4 +11,6 @@ public interface ContactRepository extends JpaRepository<Contact, Integer>{
 
 	@Query("SELECT c FROM Contact c WHERE c.name LIKE %:word% OR c.email LIKE %:word% OR c.phoneNumber LIKE %:word%")
 	List<Contact> getAllContactsByWord(String word);
+	
+	List<Contact> findAllByActive(Boolean active);
 }
